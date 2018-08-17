@@ -78,7 +78,7 @@ def get_interval(p1, p2):
         alter -= np.sign(alter)
 
     # Interval direction.
-    sgn = np.sign(chrom or steps)
+    sgn = np.sign(steps or chrom)
 
     iv = ''
     if (alter > 0 and sgn >= 0) or (alter < 0 and sgn < 0):
@@ -108,20 +108,20 @@ def get_pitch(kern_pitch):
     return pitch
 
 
-# #test
-# d = []
-# for c1 in 'abcdefg':
-#     for a1 in ' -#':
-#         for c2 in 'abcdefg':
-#             for a2 in ' -#':
-#                 p1 = c1 + a1
-#                 p2 = c2 + a2
-#                 sd = step_distance(p1, p2)
-#                 iv = get_interval(p1, p2)
+#test
+d = []
+for c1 in 'abcdefg':
+    for a1 in ' -#':
+        for c2 in 'abcdefg':
+            for a2 in ' -#':
+                p1 = c1 + a1
+                p2 = c2 + a2
+                sd = step_distance(p1, p2)
+                iv = get_interval(p1, p2)
 
-#                 d.append([p1, p2, iv])
-# df = pd.DataFrame(d)
+                d.append([p1, p2, iv])
+df = pd.DataFrame(d)
 
-# print(df.to_string())
-# print(sorted(list(set(df[2]))))
+print(df.to_string())
+print(sorted(list(set(df[2]))))
 
